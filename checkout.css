@@ -1,0 +1,129 @@
+:root {
+    --primary-color: #00ffe7;
+    --accent-color: #ffffff;
+    background-color: #0d0d0d;
+    --modal-bg: #121212;
+    --input-bg: #1a1a1a;
+    --input-border: #333;
+    --text-color: #fff;
+    --white: #ffffff;
+    --black: #000000;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(background-color);
+    color: var(--text-color);
+  }
+  
+  .subscription-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("img/subscription-img.jpeg");
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .card {
+    background-color: linear-gradient(145deg, #111, #0a0a0a);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    text-align: center;
+    width: 360px;
+  }
+  
+  .glow {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+  }
+  
+  .card-description {
+    color: #ccc;
+    margin-bottom: 1rem;
+  }
+  
+  .card-price-box {
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    color: var(--white);
+    font-weight: bold;
+  }
+  
+  .input-group {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    color: #bbb;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    border-radius: 8px;
+    color: var(--text-color);
+  }
+  
+  .stripe-element {
+    padding: 0.75rem;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    color: white;
+  }
+  
+  .card-subscribe-button {
+    display: inline-block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: var(--black);
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .card-subscribe-button:hover {
+    background-color: var(--white);
+    color: var(--black);
+  }
+  
+  .separator {
+    margin: 1rem 0;
+    color: #888;
+  }
+  
+  .alt-payments {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .alt-button {
+    background-color: #1e1e1e;
+    color: var(--text-color);
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .alt-button:hover {
+    background-color: #333;
+  }
+  

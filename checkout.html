@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subscribe - $5/month</title>
+  <link rel="stylesheet" href="checkout.css" />
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <div class="subscription-container">
+    <div class="card">
+      <h2 class="glow" id="checkout-greeting"></h2>
+      <p class="card-description">Ready to unlock your potential, <span id="username-greeting glow-effect"></span></p>
+      
+      <div class="card-price-box">$5/month</div>
+
+      <form id="payment-form">
+        <div class="input-group">
+          <label for="cardholder-name">Cardholder Name</label>
+          <input id="cardholder-name" type="text" required placeholder="John Doe"/>
+        </div>
+      
+        <label>Card Information</label>
+        <div id="card-number" class="stripe-element"></div>
+        <div id="card-expiry" class="stripe-element"></div>
+        <div id="card-cvc" class="stripe-element"></div>
+      
+        <button type="submit" class="card-subscribe-button">Pay with Card</button>
+      </form>
+      
+
+      <div class="separator">or</div>
+
+      <div class="alt-payments">
+        <button id="paypal-button" class="alt-button">Pay with PayPal</button>
+        <button id="apple-pay-button" class="alt-button">Pay with Apple Pay</button>
+      </div>
+    </div>
+  </div>
+
+    <script src="checkout.js"></script>
+</body>
+</html>

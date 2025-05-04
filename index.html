@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="CHANGE_ME">
+    <meta name="author" content="CHANGE_ME">
+    <meta name="keywords" content="CHANGE_ME">
+
+    <title>My Website</title>
+    
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!--<link rel="icon" href="favicon.ico" type="image/x-icon">-->
+    
+    <!-- Open Graph Tags for Social Media Sharing 
+    <meta property="og:title" content="My Website">
+    <meta property="og:description" content="Description of your website">
+    <meta property="og:image" content="path-to-image.jpg">
+    <meta property="og:url" content="https://www.yourwebsite.com">
+    -->
+
+    <!-- Twitter Card Tags for Twitter Sharing 
+    <meta name="twitter:title" content="My Website">
+    <meta name="twitter:description" content="Description of your website">
+    <meta name="twitter:image" content="path-to-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    -->
+
+</head>
+<body>
+
+
+    <div class="scene" id="intro-scene">
+        <video width="720" height="480" autoplay loop muted>
+            <source src="img/intro-vid.mov">
+        </video>
+    </div>
+
+
+    <section class="intro">
+        <div class="intro-content">
+            <h1 class="hollow-effect glow-effect title">not.license</h1>
+            <p class="sub-title">Where loyalty meets content</p>
+            
+            <a href="subscription.html" class=" button button-filled">Enter vault</a>
+            
+            <a href="#" class="button button-empty"  id="sign-in">Log in</a>
+        </div>
+
+        <div class="modal" id="loginModal">
+            <div class="modal-content">
+              <span class="close-btn" id="closeModal">&times;</span>
+              <h2 class="">Log In</h2>
+              <form class="login-form">
+                <input type="email" placeholder="Email" required />
+                <input type="password" placeholder="Password" required />
+                <button type="submit" class="login-btn">Login</button>
+                <div class="modal-divider">or</div>
+                <button class="google-btn">Log in with <img src="img/google-logo.png" alt="google"></button>
+              </form>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="effects.js"></script>
+    <script src="modal.js"></script>
+</body>
+</html>

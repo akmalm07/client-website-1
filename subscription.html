@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Subscribe</title>
+    <link rel="stylesheet" href="modal.css" />
+    <link rel="stylesheet" href="subscription.css" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+<body>
+    <section class="subscription-container">
+        <p class="tilt tilt-left">Exclusive</p>
+        <p class="tilt tilt-right">Premium</p>
+        
+        <div class="card">
+            <h1 class="card-title glow">Join the Vault</h1>
+            <p class="card-description">Get exclusive content. Loyalty always rewarded.</p>
+            <div class="card-price-box">
+                <span class="card-price">$5</span>
+                <span class="card-period">/month</span>
+            </div>
+            <a href="#" class="card-subscribe-button" id="sign-in">Join Vault</a>
+        </div>
+
+        <div class="modal" id="loginModal">
+            <div class="modal-content">
+                <span class="close-btn" id="closeModal">&times;</span>
+                <h2 class="">Sign In</h2>
+                <form class="login-form" id="login-form">
+                    <input id="name-input" type="text" placeholder="Name" required />
+                    <input id="email-input" type="email" placeholder="Email" required />
+                    <input id="password-input" type="password" placeholder="Password" required />
+                    <button type="submit" class="login-btn">Sign In</button>
+                    <div class="modal-divider">or</div>
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div> 
+                </form>
+            </div>
+        </div>
+
+        <!-- Notification Div -->
+        <div id="password-notification" class="notification">
+            <p id="notification-message"></p>
+        </div>
+
+    </section>
+    <script src="modal.js"></script>
+    <script src="sign-in.js"></script>
+</body>
+</html>
