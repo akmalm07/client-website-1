@@ -5,13 +5,16 @@
     font-style: normal;
 }
 
+
 :root {
     --primary-color: #ffffff;
     --black: #000000;
 
+
     --primary-font: 'Bebas Neue', monospace;
     --secondary-font: 'Montserrat', monospace;
 }
+
 
 body {
     font-family: var(--primary-font);
@@ -26,6 +29,7 @@ body {
     overflow: hidden;
 }
 
+
 .intro {
     position: relative;
     width: 100%;
@@ -38,6 +42,7 @@ body {
     justify-content: center;
     overflow: hidden;
 }
+
 
 .scene {
     display: flex;
@@ -53,13 +58,12 @@ body {
     transition: opacity 1s ease-in-out, z-index 1s ease-in-out;
   }
 
-
-  
   .scene.fade-out {
     opacity: 0;
     z-index: -1;
-
   }
+
+
 
 
 /*
@@ -70,9 +74,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); 
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }*/
+
 
 .intro-content {
     position: relative;
@@ -81,8 +86,9 @@ body {
     transform: translateY(-20vh);
 }
 
-.title {
-    font-size: 8rem;
+
+.intro-title {
+    font-size: 10vw;
     font-weight: bold;
     word-spacing: 0.5vw;
     letter-spacing: 1vw;
@@ -90,11 +96,12 @@ body {
     margin-bottom: 0;
 }
 
-.sub-title {
+
+.intro-sub-title {
     color: var(--primary-color);
     font-family: var(--primary-font);
     font-weight: 200;
-    font-size: 2rem;
+    font-size: 4vw;
     word-spacing: 10px;
     letter-spacing: 2px;
     text-align: center;
@@ -102,7 +109,9 @@ body {
     margin-bottom: 6vh;
 }
 
+
 .button {
+    position: relative;
     display: inline-block;
     font-weight: bold;
     border: 2px solid var(--primary-color);
@@ -113,17 +122,18 @@ body {
     word-spacing: 10px;
     letter-spacing: 2px;
     cursor: pointer;
-    position: relative;
     overflow: hidden;
     z-index: 1;
     transition: all 0.3s ease;
     margin: 0 3vw;
-    text-decoration: none; 
+    text-decoration: none;
 }
+
 
 .button:hover {
     transform: translateY(-5px);
 }
+
 
 .button-empty {
     background-color: transparent;
@@ -131,27 +141,97 @@ body {
 }
 
 
+
+
 .button-empty:hover {
     color: var(--black);
-    background-color: var(--primary-color);;
+    background-color: var(--primary-color);
 }
+
 
 .button-filled {
     background-color: var(--primary-color);
     color: var(--black);
+    text-shadow: 0 0 0px rgba(0, 0, 0, 0);
 }
 
+
 .button-filled:hover {
+    text-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
     color: var(--primary-color);
     background-color: transparent;
 }
+
+
 
 
 .glow-effect {
     text-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
 }
 
+
 .hollow-effect {
     color: transparent;
     -webkit-text-stroke: 1px var(--primary-color);
 }
+
+
+
+
+.button-login {
+    margin:10px;
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    right: 0;
+    padding: 0.5rem 1rem;
+    font-size:1rem;
+    color: var(--primary-color);
+    background-color: transparent;
+    word-spacing: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.button-login:hover {
+    color: var(--black);
+    background-color: var(--primary-color);
+}
+
+
+.modal-sign-up-lnk {
+    font-size: 1rem;    
+}
+
+.modal-sign-up-lnk a {
+    color: var(--primary-color);
+}
+
+
+.social-links {
+    display: inline;
+    position: absolute;
+    bottom: 0;
+    align-content: center;
+}
+
+
+.social-links img {
+    width:5vw;
+    height: auto;
+    bottom: 0;
+    align-content: center;
+    margin-left: 1vw;
+    margin-right: 1vw;      
+    padding:0;
+    z-index: 10;    
+}
+
+
+@media (max-height: 630px) {
+    .intro {
+      height: 160vh;
+    }
+  }  
+ 
+

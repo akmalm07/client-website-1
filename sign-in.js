@@ -17,7 +17,7 @@ function validatePassword(password) {
 
 // Function to display the notification
 function showNotification(message, type) {
-    const notification = document.getElementById('password-notification');
+    const notification = document.getElementById('notification');
     const notificationMessage = document.getElementById('notification-message');
 
     notificationMessage.textContent = message; 
@@ -39,26 +39,28 @@ document.getElementById("login-form").addEventListener("submit", (event) => {
     const email = document.getElementById("email-input").value;
     const password = document.getElementById("password-input").value;
 
+        // Check if the email is valid (this is a simple regex for demonstration)
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email)) {
+            showNotification("Please enter a valid email address.", "error");
+            return;
+        }
+
     // Validate password
     if (!validatePassword(password)) {
         showNotification("Password must be at least 8 characters long, include one uppercase letter, one lowercase letter, one number, and one special character.", "error");
         return;
     }
 
-    // Check if the email is valid (this is a simple regex for demonstration)
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailRegex.test(email)) {
-        showNotification("Please enter a valid email address.", "error");
-        return;
-    }
-
-
     localStorage.setItem("userName", username);
 
     console.log(username);
 
+    localStorage.setItem("userName", profile.getName());
     localStorage.setItem("userEmail", email);
     localStorage.setItem("userPassword", password);
+    localStorage.setItem("authProvider", "local");
+
 
     window.open('checkout.html', '_blank');
     document.getElementById("loginModal").style.display = "none"; 
@@ -72,7 +74,8 @@ function onSignIn(googleUser) {
     // Store Google User Info in localStorage
     localStorage.setItem("userName", profile.getName());
     localStorage.setItem("userEmail", profile.getEmail());
-    localStorage.setItem("userName", profile.getName());
+    localStorage.setItem("userPassword", null);
+    localStorage.setItem("authProvider", "google");
 
     window.open('checkout.html', '_blank');
     document.getElementById("loginModal").style.display = "none"; 
