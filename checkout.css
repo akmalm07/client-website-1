@@ -8,6 +8,9 @@
     --text-color: #fff;
     --white: #ffffff;
     --black: #000000;
+
+    --valid-color: #28a745;
+    --invalid-color: #dc3545;
   }
   
   body {
@@ -44,17 +47,18 @@
 
 
 .notification.success {
-    background-color: #28a745;   
+    background-color: var(--valid-color);   
 }
 
 .notification.error {
-    background-color: #dc3545;     
+    background-color: var(--invalid-color);     
 }
 
   
 
 
   .subscription-container {
+    overflow: scroll;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -158,31 +162,44 @@
   }
   
   
-  .alt-btn {
-    display: inline-block;
-    width: 100%;
-    padding: 0.75rem;
-    background-color: var(--white);
-    color: var(--black);
-    font-weight: bold;
-    border-radius: 10px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+.alt-btn {
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--white);
+  color: var(--black);
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  text-align: center;
+  height: 2.4rem;
+}
+
+.alt-btn img {
+  height: 2rem;
+  width: auto;
+  margin: 0;
+  transform: none; 
+}
+  
+  .apple-btn img {
+    margin-left: 6px;
   }
 
-  .alt-btn img {
-    display: inline-block;
-    height: 2rem;
-    width: auto;
-    margin: 0;
-    margin-left: 3px;
-    transform: translateY(-8px);
-    position: absolute;
-  }
-  
+
+
+
   .alt-btn:hover {
     background-color: var(--primary-color);
   }
   
+
+
+  @media (max-height:680px) {
+
+  }

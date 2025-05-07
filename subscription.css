@@ -8,13 +8,19 @@
     --text-color: #fff;
     --white: #ffffff;
     --black: #000000;
+
+    --valid-color: #28a745;
+
+    --invalid-color: #dc3545;
   }
-   
+
   body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-color);
+
   }
+
   
   .subscription-container {
     height: 100vh;
@@ -27,7 +33,7 @@
 
   }
 
-  .card-subscribe-button {
+  .card-join-button {
     display: inline-block;
     padding: 0.5rem 2rem;
     background: var(--primary-color);
@@ -38,7 +44,7 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   
-  .card-subscribe-button:hover {
+  .card-join-button:hover {
     background: var(--white);
     color: var(--black);
   }
@@ -49,8 +55,10 @@
     border-radius: 16px;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
     text-align: center;
-    width: 45vh;
+    width: 60vw; 
+    max-width: 400px;
     max-height: auto;
+    margin: auto;
     transform: translateY(30vh);
   }
 
@@ -82,6 +90,7 @@
     align-items: center;
     z-index: 1000;
     background-color: #000000;
+    overflow:hidden;
     transition: opacity 1s ease-in-out, z-index 1s ease-in-out;
   }
 
@@ -115,18 +124,18 @@
 }
 
 .notification.success {
-    background-color: #28a745;   
+    background-color: var(--valid-color);   
 }
 
 .notification.error {
-    background-color: #dc3545;     
+    background-color: var(--invalid-color);     
 }
 
 
 .tilt {
   z-index: 10;
   position: absolute;
-  font-size: 3vw;
+  font-size: clamp(1rem, 3vw, 3rem);
   top: 30vh;
   color: transparent; 
   background-clip: text; 
@@ -134,14 +143,16 @@
 
 .tilt-left {
   left: 20vw;
-  background-image: linear-gradient(-90deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2));
+  background-image: linear-gradient(-90deg, rgb(0, 255, 255), rgba(0, 255, 255, 0.2));
   transform: rotate(-20deg);
+  text-shadow: 0 0 20px rgb(0, 255, 255);
 }
 
 .tilt-right {
   right: 20vw;
-  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2));
+  background-image: linear-gradient(90deg, rgb(0, 255, 255), rgba(0, 255, 255, 0.2));
   transform: rotate(20deg);
+  text-shadow: 0 0 20px rgb(0, 255, 255);
 }
 
 @media (max-height: 630px) {
@@ -153,7 +164,6 @@
     transform: translateY(60vh);
   }
 }
-
 @media (max-width: 920px) {
   .tilt-right {
     right: 8vw;
@@ -166,5 +176,15 @@
   .tilt {
     top: 10vh;
     font-size: 6vw;
+  }
+}
+
+@media (max-width: 720px) {
+  .tilt-left {
+    left: 5vw;
+  }
+
+  .tilt-right {
+    right: 5vw;
   }
 }

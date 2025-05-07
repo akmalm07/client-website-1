@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="modal.css" />
     <link rel="stylesheet" href="subscription.css" />
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="83470708869-m1ptobd92on953looem9v9rimo24gtr4.apps.googleusercontent.com">
+
 </head>
 <body>
 
@@ -17,37 +19,40 @@
     </div>
 
     <section class="subscription-container">
-        <p class="tilt tilt-left">Exclusive</p>
-        <p class="tilt tilt-right">Premium</p>
+        <p class="tilt glow tilt-left">Exclusive</p>
+        <p class="tilt glow tilt-right">Premium</p>
         
         <div class="card">
-            <h1 class="card-title glow">Join the Vault</h1>
-            <p class="card-description">Get exclusive content. Loyalty always rewarded.</p>
-            <div class="card-price-box">
-                <span class="card-price">$5</span>
-                <span class="card-period">/month</span>
-            </div>
-            <a href="#" class="card-subscribe-button" id="sign-in">Join Vault</a>
+          <h1 class="card-title glow">Join the Vault</h1>
+          <p class="card-description">Get exclusive content. Loyalty always rewarded.</p>
+          <div class="card-price-box">
+              <span class="card-price">$5</span>
+              <span class="card-period">/month</span>
+          </div>
+          <button class="card-join-button" id="sign-in">Join Vault</button>
         </div>
-
+        
         <div class="modal" id="loginModal">
-            <div class="modal-content">
-                <span class="close-btn" id="closeModal">&times;</span>
-                <h2 class="">Sign In</h2>
-                <form class="login-form" id="login-form">
-                    <input id="name-input" type="text" placeholder="Name" required />
-                    <input id="email-input" type="email" placeholder="Email" required />
-                    <input id="password-input" type="password" placeholder="Password" required />
-                    <button type="submit" class="login-btn">Sign Up</button>
-                    <div class="modal-divider">or</div>
-                    <button class="google-btn g-signin2" data-onsuccess="onSignIn">Sign up with <img src="img/google-logo.png" loading="lazy" alt="google"></button>
+          <div class="modal-content">
+              <span class="close-btn" id="closeModal">&times;</span>
+              <h2>Sign In</h2>
+              <form class="login-form" id="login-form">
+                  <input id="name-input" type="text" placeholder="Name" required />
+                  <input id="email-input" type="email" placeholder="Email" required />
+                  <input id="password-input" type="password" placeholder="Password" required />
+                  <button type="submit" class="login-btn">Sign Up</button>
                 </form>
-            </div>
+                <div class="modal-divider">or</div>
+                <button id="custom-google-btn" class="google-btn">
+                  Sign up with 
+                  <img src="img/google-logo.png" loading="lazy" alt="Google">
+                </button>            
+          </div>
         </div>
-
-        <!-- Notification Div -->
-        <div id="err-notification" class="notification">
-            <p id="err-notification-message"></p>
+        
+        <!-- Fixed Notification IDs -->
+        <div id="notification" class="notification">
+          <p id="notification-message"></p>
         </div>
 
     </section>
