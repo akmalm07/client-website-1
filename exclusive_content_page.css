@@ -1,0 +1,356 @@
+
+:root {
+  --accent-color: #00aaff;
+  --background-light: #f9f9f9;
+  --background-dark: #fff;
+  --text-color: #111;
+  --font-main: 'Montserrat', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+
+body {
+  margin: 0;
+  background: var(--background-light);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  min-height: 100vh;
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  flex-direction: column;
+}
+
+
+.vault-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: black; /* optional: fallback bg */
+}
+
+.vault-scene video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+    pointer-events: none;
+}
+
+
+.account-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.account-button {
+  background-color: var(--accent-color);
+  border: none;
+  color: var(--background-dark);
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.account-button:hover {
+  background-color: #00d9c6;
+}
+
+.account-menu {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  min-width: 180px;
+  display: none;
+  flex-direction: column;
+  z-index: 12000;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+.account-menu[aria-hidden="false"] {
+  display: flex;
+}
+
+.account-menu-item {
+  background: none;
+  border: none;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.account-menu-item:hover {
+  background-color: var(--accent-color);
+  color: var(--background-dark);
+  border-radius: 4px;
+}
+
+header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  justify-content: space-between;
+  background: var(--background-dark);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  height: 56px;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--accent-color);
+  user-select: none;
+}
+
+main {
+  padding-top: 56px;
+  flex: 1 0 auto;
+}
+
+/* HERO FEATURED VIDEO */
+
+.hero {
+  position: relative;
+  width: 100vw;
+  max-height: 90vh;
+  overflow: hidden;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-light);
+  flex-direction: column;
+  text-align: center;
+  box-shadow: inset 0 -4rem 8rem -4rem rgba(0,0,0,0.15);
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  border-radius: 12px;
+}
+
+.featured-content {
+  position: relative;
+  max-width: 720px;
+  margin-bottom: 1rem;
+  z-index: 10;
+  color: var(--text-color);
+}
+
+.featured-content h1 {
+  font-family: var(--font-heading);
+  font-size: 2.75rem;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+
+.featured-content p {
+  font-size: 1.25rem;
+  margin: 0;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+.hero video {
+    width: 50vw;         /* fixed width */
+    height: auto;        /* fixed height */
+    background-color: transparent; /* black background to avoid transparency */
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+    object-fit: contain;  /* ensures video fits nicely */
+}
+
+.hero video:hover:not(.fullscreen) {
+  transform: scale(1.05);
+}
+
+/* Fullscreen styling */
+.hero video.fullscreen {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: contain !important;
+  border-radius: 0 !important;
+  z-index: 10000 !important;
+  cursor: default !important;
+}
+
+.hero.fullscreen-active .overlay,
+.hero.fullscreen-active .featured-content {
+  display: none;
+}
+
+#exitFullscreenBtn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--accent-color);
+  border: none;
+  color: var(--background-dark);
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 11000;
+  display: none;
+  user-select: none;
+  box-shadow: 0 4px 10px rgba(0,170,255,0.4);
+  transition: background-color 0.3s ease;
+}
+
+#exitFullscreenBtn:hover {
+  background: #008fcc;
+  background: #008fcc;
+}
+
+/* VIDEO ROWS */
+
+.video-section {
+  padding: 2rem 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.video-row {
+  margin-bottom: 2.5rem;
+}
+
+.video-row h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+.video-row .video-cards {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-behavior: smooth;
+}
+
+.video-row .video-card {
+  flex: 0 0 auto;
+  width: 180px;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--background-dark);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  position: relative;
+}
+
+.video-row .video-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.video-card video {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+
+.video-card .video-info {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Scrollbar styling for desktop */
+.video-row .video-cards::-webkit-scrollbar {
+  height: 8px;
+}
+.video-row .video-cards::-webkit-scrollbar-track {
+  background: transparent;
+}
+.video-row .video-cards::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 4px;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .featured-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero video {
+    width: 80vw;        
+    height: auto;        
+}
+
+  .featured-content p {
+    font-size: 1rem;
+  }
+
+  .video-row .video-card {
+    width: 140px;
+  }
+  .video-row .video-card video {
+    height: 80px;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  background: var(--background-dark);
+  color: var(--accent-color);
+  font-weight: 700;
+  user-select: none;
+  flex-shrink: 0;
+}

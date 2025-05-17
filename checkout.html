@@ -8,13 +8,29 @@
   <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
+
+
+
+
   <div class="subscription-container">
     <div class="card">
-      <h2 id="checkout-greeting">Ready to unlock your potential, <span id="username-greeting"></span>?</h2>
-      
-      <div class="card-price-box">$5/month<span class="subtext"> + tax</span></div>
+          <div id="loopingVideoContainer">
 
+    <div class="resize-handle bottom-right"></div>
+    </div>
+
+        <div id="loopingVideoContainer">
+          <video id="loopingVideo" autoplay loop muted playsinline>
+            <source src="img/fancy_animation.mov">
+            Your browser does not support the video tag.
+          </video>
+
+    </div>
+      
+      <div class="card-price-box">$9.99/month<span class="subtext"> + tax</span></div>
       <form id="payment-form">
+
+        
         <div class="input-group">
           <label class="card-info-title">Card Information</label>
           <input id="cardholder-name" class="stripe-element" type="text" required placeholder="Cardholder Name"/>
