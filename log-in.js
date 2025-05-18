@@ -53,7 +53,7 @@ function handleLocalLogin() {
   })
   .then(data => {
     console.log('Login successful:', data);
-    localStorage.setItem("userId", data.id);
+    localStorage.setItem("userId", data.userId);
     localStorage.setItem("userName", data.name);
     localStorage.setItem("userEmail", email);
     localStorage.setItem("authProvider", "local");

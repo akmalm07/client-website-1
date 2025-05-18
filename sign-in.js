@@ -52,7 +52,7 @@ function handleLocalRegistration() {
     })
     .then(data => {
         console.log('Registration successful:', data);
-        localStorage.setItem("userId", data.id);
+        localStorage.setItem("userId", data.userId);
         localStorage.setItem("userName", name);
         localStorage.setItem("userEmail", email);
         localStorage.setItem("authProvider", "local");

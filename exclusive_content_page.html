@@ -15,15 +15,12 @@
         </video>
     </div>
 
-
   <header>
     <div class="logo">No.Licence</div>
   <div class="account-wrapper">
     <button id="accountBtn" class="account-button" aria-label="Account">Account ▼</button>
     <div id="accountMenu" class="account-menu" aria-hidden="true">
-<a class="account-menu-item" href="change-password.html">Change Password</a>
-<a class="account-menu-item" href="subscription-edit.html">Subscription</a>
-<a class="account-menu-item" href="logout.html">Logout</a>
+    <a class="account-menu-item" href="logout.html">Logout</a>
     </div>
   </div>
   </header>
@@ -35,8 +32,7 @@
         <h1 id="featured-title">Loading Featured Video...</h1>
         <p id="featured-description"></p>
       </div>
-      <video id="featured-video" controls poster="" preload="metadata"></video>
-      <button id="exitFullscreenBtn" aria-label="Exit fullscreen video">✕ Exit</button>
+      <video id="featured-video" controls controlsList="nodownload" preload="metadata"></video>
     </section>
 
     <section class="video-section" id="video-sections">
@@ -48,6 +44,7 @@
     <p>© 2025 no.licence. All rights reserved.</p>
   </footer>
 
+  
   <script src="exclusive_content_page.js"></script>
   <script src="vault-effects.js"></script>
 </body>

@@ -29,7 +29,7 @@
 
     async function authenticateWithBackend(idToken) {
       try {
-        const res = await fetch(`${BACKEND_URL}/auth/google`, {
+        const res = await fetch(`${BACKEND_URL}/users/auth/google`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ idToken }),
@@ -39,15 +39,18 @@
         
         console.log(data.authToken);
         
-        if (res.ok && data.authToken) {
+        if (res.ok) {
           // Save token locally
           localStorage.setItem('authToken', data.authToken);
+          localStorage.setItem('userId', data.userId);
+          localStorage.setItem('userName', data.name);
+          localStorage.setItem('userEmail', data.email);
+          localStorage.setItem("authProvider", "google");
+          
 
-          // Notify user
           document.getElementById('message').textContent = 'Successfully signed in! Redirecting...';
           document.getElementById('message').classList.add('success');
 
-          // Redirect the opener (main tab) to checkout.html
           if (window.opener && !window.opener.closed) {
             window.opener.location.href = 'checkout.html';
           }

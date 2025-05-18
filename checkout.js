@@ -11,40 +11,9 @@ window.onload = async () => {
         }
         return;
     }
-
-    try {
-        const response = await fetch(`${BACKEND_URL}/users/${userId}/is_subscribed`, {
-            method: 'PUT', // Changed method to GET
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
-      
-            const data = await response.json();
-            console.log("Subscription Status:", data);
-            if (messageDiv) {
-                if (data.subscribed === "True") { // Backend now returns "True" or "False" as strings
-                    messageDiv.textContent = "You are currently subscribed!";
-                } else {
-                    messageDiv.textContent = "You are not currently subscribed.";
-                }
-            }
-
-            console.error("Failed to fetch subscription status:", response.status);
-            if (messageDiv) {
-                messageDiv.textContent = "Failed to check subscription status.";
-            }
-
-    } catch (error) {
-        console.error("Error fetching subscription status:", error);
-        if (messageDiv) {
-            messageDiv.textContent = "Error connecting to the server.";
-        }
-    }
 };
 
-const stripe = Stripe("pk_test_123456789");  // Replace with your real public key
+const stripe = Stripe("pk_live_51QtvdLRx1JEwxzyrXXSMeyapMysM7lSbO2BLhWXSoIrA1ZzUqWlg7VcwxKtxSwg886f1iRfLNbJC32XgN4bIk39400tJL6X6nK");  // Replace with your real public key
 const elements = stripe.elements();
 
 // Stripe styling
@@ -64,11 +33,6 @@ const style = {
   },
 };
 
-// Globals for user info
-let gUserId = "";
-let gUsername = "";
-let gEmail = "";
-let gPasscode = "";
 
 
 // Function to display the notification
@@ -104,50 +68,64 @@ cardCvc.mount("#card-cvc");
 document.getElementById("payment-form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const newWindow = window.open('about:blank'); 
+
     const cardholderName = document.getElementById("cardholder-name").value.trim();
     if (!cardholderName) {
         showNotification("Please enter the cardholder's name.", "error");
+        newWindow.close();
         return;
     }
 
     const { paymentMethod, error } = await stripe.createPaymentMethod({
-        type: "card",
+        type: "card",   
         card: cardNumber,
         billing_details: { name: cardholderName },
     });
 
+    email = localStorage.getItem("userEmail");
+
     if (error) {
+        newWindow.close();
         showNotification(`Payment error: ${error.message}`, "error");
     } else {
            showNotification("Payment Method Created Successfully!", "success");
             console.log("Payment Method ID:", paymentMethod.id);
 
-            const subscribeUrl = `${BACKEND_URL}/users/${userId}/subscribe`; 
-
+            const userId = localStorage.getItem("userId");
             try {
-                const response = await fetch(subscribeUrl, {
-                    method: 'SUBSCRIBE',
+                const response = await fetch(`${BACKEND_URL}/users/${userId}/subscribe`, {
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': userId,
                     },
                     body: JSON.stringify({
-                        email: gEmail,
-                        payment_method: paymentMethod.id, 
+                        "email": email,
+                        "payment_method_id": paymentMethod.id, 
                     }),
                 });
+            const data = await response.json();
 
-                const data = await response.json();
-
-                if (response.ok) {
-                    showNotification(`Successfully subscribed. Subscription ID: ${data.subscription_id}`, "success");
-                    errorDiv.textContent = '';
-                    // Optionally redirect the user or update the UI
-                } else {
-                    showNotification(`Subscription failed: ${data.error || 'An error occurred during subscription.'}`, "error");
-                    console.error("Subscription error:", data);
+            if (response.ok) {
+     /*           if (data.clientSecret) {
+                    const result = await stripe.confirmCardPayment(data.clientSecret);
+                    if (result.error) {
+                        showNotification(`Payment confirmation failed: ${result.error.message}`, "error");
+                        return;
+                    }
                 }
+*/
+                showNotification(`Successfully subscribed. Subscription ID: ${data.subscriptionId}`, "success");
+                newWindow.location.href = 'exclusive_content_page.html';
+            } else {
+                newWindow.close();
+                showNotification(`Subscription failed: ${data.error || 'An error occurred during subscription.'}`, "error");
+                console.error("Subscription error:", data);
+            }
 
             } catch (error) {
+                newWindow.close();
                 console.error("Error calling subscribe endpoint:", error);
                 showNotification("Failed to connect to the server for subscription.", "error");
             }

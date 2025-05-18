@@ -28,23 +28,42 @@
 
     async function authenticateWithBackend(idToken) {
       try {
-        const res = await fetch(`${BACKEND_URL}/auth/google_login`, {
+        const res = await fetch(`${BACKEND_URL}/users/auth/google_login`, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ idToken }),
+          headers: { 
+            'Content-Type': 'application/json',
+
+            
+          },
+          body: JSON.stringify(
+            { idToken }),
         });
 
         const data = await res.json();
 
         if (res.ok) {
           localStorage.setItem('token', data.token);
+          localStorage.setItem('userEmail', data.email);
+          localStorage.setItem('userId', data.userId);
+          const subscribed = data.subscribed;
 
           document.getElementById('message').textContent = 'Login successful! Redirecting...';
           document.getElementById('message').classList.add('success');
 
-          if (window.opener && !window.opener.closed) {
-            window.opener.location.href = 'checkout.html';
+          if (!subscribed)
+          {
+            if (window.opener && !window.opener.closed) {
+              window.opener.location.href = 'checkout.html';
+            }
           }
+          else
+          {
+            if (window.opener && !window.opener.closed) {
+              window.opener.location.href = 'exclusive_content_page.html';
+            }
+          }
+
+
 
           setTimeout(() => window.close(), 1500);
 
