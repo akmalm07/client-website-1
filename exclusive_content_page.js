@@ -22,6 +22,11 @@ async function fetchVideoData() {
       }
     });
 
+
+    document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+
     const data = await response.json();
 
     if (!response.ok) {
