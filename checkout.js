@@ -9,7 +9,7 @@ window.onload = async () => {
     }
 };
 /*
-const stripe = Stripe("pk_live_51QtvdLRx1JEwxzyrXXSMeyapMysM7lSbO2BLhWXSoIrA1ZzUqWlg7VcwxKtxSwg886f1iRfLNbJC32XgN4bIk39400tJL6X6nK"); 
+const stripe = Stripe("idk"); 
 const elements = stripe.elements();
 
 // Stripe styling

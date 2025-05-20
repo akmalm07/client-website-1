@@ -3,7 +3,7 @@ const BACKEND_URL = 'https://no-licence-user-db-manager-runner-83470708869.us-ce
 document.addEventListener('DOMContentLoaded', () => {
   const customBtn = document.getElementById('custom-google-btn');
   customBtn.addEventListener('click', () => {
-    const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=83470708869-jp3k1ajdp0n3jqvi7gv1t37715ukijmg.apps.googleusercontent.com&redirect_uri=${encodeURIComponent('http://127.0.0.1:5500/google-callback-login.html')}&response_type=token id_token&scope=openid%20email%20profile&nonce=${generateRandomNonce()}`;
+    const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=83470708869-jp3k1ajdp0n3jqvi7gv1t37715ukijmg.apps.googleusercontent.com&redirect_uri=${encodeURIComponent('https://contentvault.club/google-callback-login.html')}&response_type=token id_token&scope=openid%20email%20profile&nonce=${generateRandomNonce()}`;
     window.open(googleAuthUrl, "_blank", "width=500,height=600");
   });
 });
