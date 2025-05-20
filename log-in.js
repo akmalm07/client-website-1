@@ -1,5 +1,6 @@
 const BACKEND_URL = 'https://no-licence-user-db-manager-runner-83470708869.us-central1.run.app';
 
+/*
 document.addEventListener('DOMContentLoaded', () => {
   const customBtn = document.getElementById('custom-google-btn');
   customBtn.addEventListener('click', () => {
@@ -7,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open(googleAuthUrl, "_blank", "width=500,height=600");
   });
 });
+
+
 
 // Generates a random nonce string (for security)
 function generateRandomNonce(length = 16) {
@@ -17,6 +20,7 @@ function generateRandomNonce(length = 16) {
   }
   return result;
 }
+*/
 
 // Local login form submission handling
 document.getElementById('login-form').addEventListener('submit', function(event) {

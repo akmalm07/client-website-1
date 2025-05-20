@@ -1,5 +1,6 @@
 const BACKEND_URL = 'https://no-licence-user-db-manager-runner-83470708869.us-central1.run.app';
 
+/*
 document.addEventListener('DOMContentLoaded', () => {
     const customBtn = document.getElementById('custom-google-btn');
     customBtn.addEventListener('click', () => {
@@ -16,6 +17,8 @@ function generateRandomNonce(length = 16) {
     }
     return result;
 }
+*/
+
 
 document.getElementById('signin-form').addEventListener('submit', function(event) {
     event.preventDefault();
